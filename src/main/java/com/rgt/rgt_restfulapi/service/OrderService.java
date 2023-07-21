@@ -13,6 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 public class OrderService {
     private final OrderJpaRepository orderJpaRepository;
 
+    @Transactional
     public OrderResponse inputOrder(OrderRequest orderRequest) {
         Order newOrder = orderJpaRepository.save(Order.makeOrder(orderRequest));
         OrderResponse newOrderResponse = OrderResponse.makeOrderResponse(newOrder);
